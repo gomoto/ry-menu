@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ryMenuDemo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Demo for ry-menu: a minimalist's angular menu</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <script src="ryMenu.directive.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500" rel="stylesheet" type="text/css">
+  <style>
+    /*Some basic styles to get us through this simple example*/
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    *[ry-menu] {
+      float: left;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      background: #323232;
+      color: #fafafa;
+      font-family: Roboto, sans-serif;
+      cursor: pointer;
+    }
+    *[ry-menu-list] {
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <div ry-menu>
+    <span ry-menu-trigger>Click here to open menu</span>
+    <ul ry-menu-list>
+      <li ry-menu-item ng-repeat="item in ['Item 1', 'Item 2', 'Item 3']">{{item}}</li>
+    </ul>
+  </div>
+</body>
+</html>
