@@ -54,6 +54,7 @@ angular.module('ryMenuDemo', [])
 .directive('ryMenu', ['$document', '$parse', function($document, $parse) {
   return {
     restrict: 'A',
+    require: 'ryMenu',//require own controller
     scope: true,
     controller: function($scope) {
       $scope.isOpen = false;
@@ -65,9 +66,8 @@ angular.module('ryMenuDemo', [])
         $scope.isOpen = false;
         $scope.onClose($scope);
       };
-      $scope.close = this.close;
     },
-    link: function(scope, element, attributes) {
+    link: function(scope, element, attributes, ryMenuCtrl) {
       var domElement = element[0];
 
       //if attribute is undefined, $parse returns angular.noop
@@ -82,7 +82,7 @@ angular.module('ryMenuDemo', [])
         var enclosingMenu = findElementWithAttribute(event.target, 'ry-menu');
         if (enclosingMenu !== domElement) {
           scope.$apply(function() {
-            scope.close();
+            ryMenuCtrl.close();
           });
         }
       }
