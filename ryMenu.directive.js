@@ -43,6 +43,7 @@ angular.module('ryMenuDemo', [])
 .directive('ryMenu', ['$document', '$parse', function($document, $parse) {
   return {
     restrict: 'A',
+    scope: true,
     controller: function($scope) {
       $scope.isOpen = false;
       this.open = function open() {
