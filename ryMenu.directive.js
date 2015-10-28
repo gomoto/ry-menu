@@ -62,12 +62,19 @@ angular.module('ryMenuDemo', [])
       $scope.close = this.close;
     },
     link: function(scope, element, attributes) {
+      var domElement = element[0];
+
       //if attribute is undefined, $parse returns angular.noop
       scope.onOpen = $parse(attributes.onOpen);
       scope.onClose = $parse(attributes.onClose);
       //mousedown anywhere to close menu
       function closeFromAnywhere(event) {
-        if (scope.isOpen && !findElementWithAttribute(event.target, 'ry-menu')) {
+        if (!scope.isOpen) {
+          return;
+        }
+        //close menu if event came from anywhere except inside this menu
+        var enclosingMenu = findElementWithAttribute(event.target, 'ry-menu');
+        if (enclosingMenu !== domElement) {
           scope.$apply(function() {
             scope.close();
           });
