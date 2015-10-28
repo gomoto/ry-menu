@@ -9,6 +9,12 @@
  * ry-menu-list    defines the element that is opened and closed
  * ry-menu-item    defines the choices in the ry-menu-list
  *
+ * Hooks:
+ *
+ * on-open    defines an expression to evaluate whenever the menu opens
+ * on-close   defines an expression to evaluate whenever the menu closes
+ * ng-mouseup defines an expression to evaluate when a menu item is selected
+ *
  * Example usage:
  *
  * <div ry-menu on-open="doSomethingWhenMenuOpens()" on-close="varSetOnClose = varValue">
