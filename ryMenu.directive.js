@@ -1,6 +1,6 @@
 /**
  * The ry-menu family of directives defines dropdown-style menu behavior
- * without imposing specific styles. All directives are used as attributes.
+ * without imposing specific styles. All directives are attributes.
  *
  * Directives:
  *
@@ -24,7 +24,7 @@
  *   </ul>
  * </div>
  *
- * Extending ry-menu
+ * Extending ry-menu:
  *
  * Since these directives are applied to plain HTML elements, you can supplement
  * ry-menu behavior with your own. See the example 'Extending ry-menu' on the demo page.
