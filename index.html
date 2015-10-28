@@ -12,31 +12,79 @@
     * {
       margin: 0;
       padding: 0;
+      font-family: Roboto, sans-serif;
+      font-weight: 400;
+    }
+    h1 {
+      clear: left;
+      padding-top: 20px;
+      font-size: 20px;
     }
     *[ry-menu] {
+      position: relative;
       float: left;
 
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-
-      background: #323232;
+    }
+    *[ry-menu-trigger] {
+      background: #333;
       color: #fafafa;
-      font-family: Roboto, sans-serif;
       cursor: pointer;
     }
     *[ry-menu-list] {
       list-style: none;
+      z-index: 1;
+      position: absolute;
+
+      width: 100%;
+      background: #585858;
+      color: #fafafa;
+    }
+    *[ry-menu-item] {
+      cursor: pointer;
+    }
+    .ry-menu-item--hovered {
+      background: #333;
     }
   </style>
 </head>
 <body>
+
+  <h1>Basic ry-menu</h1>
   <div ry-menu>
     <span ry-menu-trigger>Click here to open menu</span>
     <ul ry-menu-list>
       <li ry-menu-item ng-repeat="item in ['Item 1', 'Item 2', 'Item 3']">{{item}}</li>
     </ul>
   </div>
+
+  <h1>Extending ry-menu</h1>
+  <script>
+    angular.module('ryMenuDemo')
+    .controller('ryMenuDemoCtrl1', ['$scope', function($scope) {
+      $scope.data = {
+        selections: ['Selection 1', 'Selection 2', 'Selection 3'],
+        selection: 'Selection 1',
+        hover: null
+      };
+    }]);
+  </script>
+  <div ry-menu ng-controller="ryMenuDemoCtrl1" on-open="data.hover=data.selection">
+    <span ry-menu-trigger>{{data.selection}}</span>
+    <ul ry-menu-list>
+      <li ry-menu-item
+        ng-repeat="selection in data.selections"
+        ng-mouseup="data.selection=selection"
+        ng-mouseenter="data.hover=selection"
+        ng-mouseleave="data.hover=null"
+        ng-class="{'ry-menu-item--hovered': selection===data.hover}">
+        {{selection}}
+      </li>
+    </ul>
+  </div>
+
 </body>
 </html>

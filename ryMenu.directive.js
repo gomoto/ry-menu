@@ -18,6 +18,11 @@
  *   </ul>
  * </div>
  *
+ * Extending ry-menu
+ *
+ * Since these directives are applied to plain HTML elements, you can supplement
+ * ry-menu behavior with your own. See the example 'Extending ry-menu' on the demo page.
+ *
  */
 
 /**
@@ -48,11 +53,11 @@ angular.module('ryMenuDemo', [])
       $scope.isOpen = false;
       this.open = function open() {
         $scope.isOpen = true;
-        $scope.onOpen();
+        $scope.onOpen($scope);
       };
       this.close = function close() {
         $scope.isOpen = false;
-        $scope.onClose();
+        $scope.onClose($scope);
       };
       $scope.close = this.close;
     },
